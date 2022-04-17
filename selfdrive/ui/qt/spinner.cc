@@ -82,12 +82,12 @@ Spinner::Spinner(QWidget *parent) : QWidget(parent) {
     QProgressBar {
       background-color: #373737;
       width: 1000px;
-      border solid white;
+      border solid red;
       border-radius: 10px;
     }
     QProgressBar::chunk {
       border-radius: 10px;
-      background-color: blue,red;
+      background-color: red;
     }
   )");
 
