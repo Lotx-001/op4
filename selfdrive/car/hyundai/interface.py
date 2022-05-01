@@ -39,7 +39,7 @@ class CarInterface(CarInterfaceBase):
     ret.safetyConfigs = [get_safety_config(car.CarParams.SafetyModel.hyundaiLegacy, 0)]
 
     tire_stiffness_factor = 1.
-    ret.maxSteeringAngleDeg = 1000.
+    ret.maxSteeringAngleDeg = 90.
 
     # lateral
     ret.lateralTuning.init('lqr')
