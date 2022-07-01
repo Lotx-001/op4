@@ -42,9 +42,6 @@ class CarInterface(CarInterfaceBase):
     ret.maxSteeringAngleDeg = 2000.
   
 
-    ret.steerFaultMaxAngle = 90
-    ret.steerFaultMaxFrames = 100
-
     # lateral
     ret.lateralTuning.init('lqr')
 
