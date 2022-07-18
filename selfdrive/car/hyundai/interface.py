@@ -226,13 +226,11 @@ class CarInterface(CarInterfaceBase):
       tire_stiffness_factor = 0.7
       ret.centerToFront = ret.wheelbase * 0.4
     elif candidate in [CAR.K7, CAR.K7_HEV]:
-      ret.mass = 1575. + STD_CARGO_KG
-      ret.wheelbase = 2.85
-      ret.steerRatio = 12.5
-      ret.lateralTuning.pid.kf = 0.00005
-      ret.lateralTuning.pid.kiBP, ret.lateralTuning.pid.kpBP = [[0.], [0.]]
-      ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.25], [0.05]]
+      tire_stiffness_factor = 0.7
+      ret.mass = 1650. + STD_CARGO_KG
+      ret.wheelbase = 2.855
       ret.centerToFront = ret.wheelbase * 0.4
+      ret.steerRatio = 17.25
     elif candidate == CAR.SELTOS:
       ret.mass = 1310. + STD_CARGO_KG
       ret.wheelbase = 2.6
