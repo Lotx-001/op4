@@ -67,14 +67,14 @@ class CarInterface(CarInterfaceBase):
     ret.longitudinalTuning.kpBP = [0., 5.*CV.KPH_TO_MS, 10.*CV.KPH_TO_MS, 20.*CV.KPH_TO_MS, 130.*CV.KPH_TO_MS]
     ret.longitudinalTuning.kpV = [1.6, 1.18, 0.9, 0.78, 0.48]
     ret.longitudinalTuning.kiBP = [0., 130. * CV.KPH_TO_MS]
-    ret.longitudinalTuning.kiV = [0.1, 0.06]
+    ret.longitudinalTuning.kiV = [0.1, 0.05]
     ret.longitudinalActuatorDelayLowerBound = 0.3
     ret.longitudinalActuatorDelayUpperBound = 0.3
 
     ret.stopAccel = -2.0
-    ret.stoppingDecelRate = 0.6  # brake_travel/s while trying to stop
+    ret.stoppingDecelRate = 0.4  # brake_travel/s while trying to stop
     ret.vEgoStopping = 0.5
-    ret.vEgoStarting = 0.5  # needs to be >= vEgoStopping to avoid state transition oscillation
+    ret.vEgoStarting = 1.0  # needs to be >= vEgoStopping to avoid state transition oscillation
 
     # genesis
     if candidate == CAR.GENESIS:
