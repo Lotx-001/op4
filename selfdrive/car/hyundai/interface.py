@@ -39,7 +39,8 @@ class CarInterface(CarInterfaceBase):
     ret.safetyConfigs = [get_safety_config(car.CarParams.SafetyModel.hyundaiLegacy, 0)]
 
     tire_stiffness_factor = 1.
-    ret.maxSteeringAngleDeg = 180.
+    ret.maxSteeringAngleDeg = 2000.
+  
 
     # lateral
     ret.lateralTuning.init('lqr')
@@ -66,14 +67,14 @@ class CarInterface(CarInterfaceBase):
     ret.longitudinalTuning.kpBP = [0., 5.*CV.KPH_TO_MS, 10.*CV.KPH_TO_MS, 20.*CV.KPH_TO_MS, 130.*CV.KPH_TO_MS]
     ret.longitudinalTuning.kpV = [1.6, 1.18, 0.9, 0.78, 0.48]
     ret.longitudinalTuning.kiBP = [0., 130. * CV.KPH_TO_MS]
-    ret.longitudinalTuning.kiV = [0.1, 0.06]
+    ret.longitudinalTuning.kiV = [0.1, 0.05]
     ret.longitudinalActuatorDelayLowerBound = 0.3
     ret.longitudinalActuatorDelayUpperBound = 0.3
 
     ret.stopAccel = -2.0
-    ret.stoppingDecelRate = 0.6  # brake_travel/s while trying to stop
+    ret.stoppingDecelRate = 0.4  # brake_travel/s while trying to stop
     ret.vEgoStopping = 0.5
-    ret.vEgoStarting = 0.5  # needs to be >= vEgoStopping to avoid state transition oscillation
+    ret.vEgoStarting = 1.0  # needs to be >= vEgoStopping to avoid state transition oscillation
 
     # genesis
     if candidate == CAR.GENESIS:
@@ -225,11 +226,11 @@ class CarInterface(CarInterfaceBase):
       tire_stiffness_factor = 0.7
       ret.centerToFront = ret.wheelbase * 0.4
     elif candidate in [CAR.K7, CAR.K7_HEV]:
-      tire_stiffness_factor = 0.7
-      ret.mass = 1650. + STD_CARGO_KG
+      tire_stiffness_factor = 0.8
+      ret.mass = 1600. + STD_CARGO_KG
       ret.wheelbase = 2.855
       ret.centerToFront = ret.wheelbase * 0.4
-      ret.steerRatio = 17.5
+      ret.steerRatio = 17.
     elif candidate == CAR.SELTOS:
       ret.mass = 1310. + STD_CARGO_KG
       ret.wheelbase = 2.6
@@ -241,7 +242,7 @@ class CarInterface(CarInterfaceBase):
       ret.centerToFront = ret.wheelbase * 0.4
       tire_stiffness_factor = 0.8
 
-      ret.steerRatio = 14.5
+      ret.steerRatio = 12.5
 
       ret.lateralTuning.lqr.scale = 1650.
       ret.lateralTuning.lqr.ki = 0.01
